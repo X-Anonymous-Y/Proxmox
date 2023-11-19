@@ -116,7 +116,7 @@ echo_default() {
     core_msg="Core"
   fi
   echo -e "${DGN}Allocated CPU: ${BGN}$var_cpu${CL} ${DGN}${core_msg}${CL}"
-  echo -e "${DGN}Allocated Ram ${BGN}$var_ram${CL} ${CL}${DGN}MB${CL}"
+  echo -e "${DGN}Allocated Ram ${BGN}$var_ram${CL} ${DGN}MB${CL}"
   echo -e "${DGN}Using Bridge: ${BGN}vmbr0${CL}"
   echo -e "${DGN}Using Static IP Address: ${BGN}dhcp${CL}"
   echo -e "${DGN}Using Gateway Address: ${BGN}Default${CL}"
@@ -225,7 +225,7 @@ advanced_settings() {
       CT_ID="$NEXTID"
       echo -e "${DGN}Using Container ID: ${BGN}$CT_ID${CL}"
     else
-      echo -e "${DGN}Container ID: ${BGN}$CT_ID${CL}"
+      echo -e "${DGN}Using Container ID: ${BGN}$CT_ID${CL}"
     fi
   else
     exit
@@ -281,9 +281,9 @@ advanced_settings() {
   if RAM_SIZE=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "Allocate RAM in MiB" 8 58 $var_ram --title "RAM" 3>&1 1>&2 2>&3); then
     if [ -z "$RAM_SIZE" ]; then
       RAM_SIZE="$var_ram"
-      echo -e "${DGN}Allocated RAM: ${BGN}$RAM_SIZE${CL} ${CL}${DGN}MB${CL}"
+      echo -e "${DGN}Allocated RAM: ${BGN}$RAM_SIZE${CL} ${DGN}MB${CL}"
     else
-      echo -e "${DGN}Allocated RAM: ${BGN}$RAM_SIZE${CL} ${CL}${DGN}MB${CL}"
+      echo -e "${DGN}Allocated RAM: ${BGN}$RAM_SIZE${CL} ${DGN}MB${CL}"
     fi
   else
     exit-script
