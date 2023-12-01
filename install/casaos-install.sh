@@ -32,7 +32,7 @@ echo -e '{\n  "storage-driver": "fuse-overlayfs",\n  "log-driver": "journald"\n}
 else
 echo -e '{\n  "log-driver": "journald"\n}' > /etc/docker/daemon.json
 fi
-$STD bash <(curl -fsSL https://get.casaos.io)
+$STD bash <(curl -fsSL https://get.casaos.io/v0.4.1)
 msg_ok "Installed CasaOS"
 
 motd_ssh

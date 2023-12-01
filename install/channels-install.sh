@@ -17,19 +17,15 @@ msg_info "Installing Dependencies"
 $STD apt-get install -y curl
 $STD apt-get install -y sudo
 $STD apt-get install -y mc
+$STD apt-get install -y chromium
+$STD apt-get install -y xvfb
 msg_ok "Installed Dependencies"
 
-msg_info "Installing ASP.NET Core Runtime"
-wget -q https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-$STD dpkg -i packages-microsoft-prod.deb
-rm -rf packages-microsoft-prod.deb
-$STD apt-get update
-$STD apt-get install -y aspnetcore-runtime-7.0
-msg_ok "Installed ASP.NET Core Runtime"
-
-msg_info "Installing Technitium DNS"
-$STD bash <(curl -fsSL https://download.technitium.com/dns/install.sh)
-msg_ok "Installed Technitium DNS"
+msg_info "Installing Channels DVR Server (Patience)"
+cd /opt
+$STD bash <(curl -fsSL https://getchannels.com/dvr/setup.sh)
+# adduser $(id -u -n) video && adduser $(id -u -n) render
+msg_ok "Installed Channels DVR Server"
 
 motd_ssh
 customize
