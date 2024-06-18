@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright (c) 2021-2023 tteck
+# Copyright (c) 2021-2024 tteck
 # Author: tteck (tteckster)
 # License: MIT
 # https://github.com/tteck/Proxmox/raw/main/LICENSE
@@ -25,9 +25,9 @@ mkdir -p "$(dirname "$DOCKER_CONFIG_PATH")"
 echo -e '{\n  "log-driver": "journald"\n}' > "$DOCKER_CONFIG_PATH"
 cd /opt
 wget -q https://raw.githubusercontent.com/runtipi/runtipi/master/scripts/install.sh
-sed -i -e '/newgrp docker/d' -e '/exit 0/d' install.sh
 chmod +x install.sh
 $STD ./install.sh
+chmod 666 /opt/runtipi/state/settings.json
 msg_ok "Installed Runtipi"
 
 motd_ssh
@@ -35,6 +35,6 @@ customize
 
 msg_info "Cleaning up"
 rm /opt/install.sh
-$STD apt-get autoremove
-$STD apt-get autoclean
+$STD apt-get -y autoremove
+$STD apt-get -y autoclean
 msg_ok "Cleaned"
